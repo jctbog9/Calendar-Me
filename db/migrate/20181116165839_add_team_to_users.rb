@@ -1,6 +1,6 @@
 class AddTeamToUsers < ActiveRecord::Migration[5.2]
   def up
-    add_reference :users, :team, foreign_key: true
+    add_reference :users, :team, foreign_key: true, null: false
   end
 
   def down

@@ -17,7 +17,10 @@ ActiveRecord::Schema.define(version: 2018_11_16_171703) do
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
-    t.string "location", null: false
+    t.string "address", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "zip", null: false
     t.string "date", null: false
     t.string "start_time", null: false
     t.string "end_time", null: false
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_171703) do
     t.string "role", default: "member", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "team_id"
+    t.bigint "team_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["team_id"], name: "index_users_on_team_id"
