@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 2018_11_16_171703) do
     t.string "zip", null: false
     t.string "date", null: false
     t.string "start_time", null: false
-    t.string "end_time", null: false
-    t.string "description", null: false
-    t.string "ticket_price", null: false
+    t.string "end_time"
+    t.string "description"
+    t.string "ticket_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_11_16_171703) do
     t.string "role", default: "member", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "team_id", null: false
+    t.bigint "team_id", default: 1
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["team_id"], name: "index_users_on_team_id"
