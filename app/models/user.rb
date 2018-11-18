@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates_presence_of :first_name, :last_name, :business_phone, :role, :team
+  validates_presence_of :first_name, :last_name, :business_phone, :role, :team_id
 
   belongs_to :team
 
