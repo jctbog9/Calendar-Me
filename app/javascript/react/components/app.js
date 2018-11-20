@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
+import {Router, browserHistory, Route, IndexRoute } from 'react-router';
+import LandingPage from '../containers/LandingPage';
 
 export const App = (props) => {
-  return (<h1>Make It So React</h1>)
-}
+  return (
+    <Router history={browserHistory}>
+      <Route path='/' component={LandingPage} />
+    </Router>
+  );
+};
 
-export default App
+export default App;
