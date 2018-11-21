@@ -5,10 +5,20 @@
 <br/>
 <div>
   <% @events_list.each do |event| %>
-  <div>
-    <a class='event-container'> <%= event%> </a>
+  <% if (event['logo'] != nil) %>
+    <% logo = event['logo']['original']['url'] %>
+  <% else %>
+    <% logo = 'n/a' %>
+  <% end %>
+    <a><img class='event-logo' src="<%=logo%>" alt='image'/></a>
+    <div class='event-container'>
+      <a> <%= event['name']['text']%> </a>
+    </div>
+    <div class='description-container'>
+    <p><%= event['description']['text'] %></p>
+    <p class='event-start-end'>Event Start: <%= event['start']['utc'] %> | Event End: <%= event['end']['utc'] %></p>
+    </div>
     <br/>
     <br/>
-  </div>
   <% end %>
 </div>

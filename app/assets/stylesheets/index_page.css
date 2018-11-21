@@ -1,13 +1,42 @@
 .event-container {
   border: 2px solid black;
-  width: 70%;
-  margin-left: 15%;
+  width: 50%;
+  margin-left: 25%;
   text-align: center;
   border-radius: 10px;
-  padding: 5px;
+  padding: 1%;
+}
+
+.event-logo:hover {
+  transform: scale(1.25);
 }
 
 .event-container:hover {
-  transform: scale(1.5);
+  transform: scale(1.25);
   background-color: yellow;
+}
+
+.event-logo {
+  width: 20%;
+  margin-left: 40%;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 40px;
+}
+
+.description-container {
+  border: 2px solid black;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1%;
+}
+
+.event-start-end {
+  font-size: 9pt;
+  font-style: italic;
+  padding: 0;
+  margin: 0;
 }
