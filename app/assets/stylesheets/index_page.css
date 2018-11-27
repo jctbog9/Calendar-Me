@@ -7,13 +7,9 @@
   padding: 1%;
 }
 
-.event-logo:hover {
-  transform: scale(1.25);
-}
-
 .event-container:hover {
   transform: scale(1.25);
-  background-color: yellow;
+  background-color: lightyellow;
 }
 
 .event-logo {

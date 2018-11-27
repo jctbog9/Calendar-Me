@@ -1,18 +1,24 @@
 <h1>Calendar Me</h1>
+<script type="text/javascript">
+  function addEvent(event) {
+    console.log("Event Name: " + event[0])
+    console.log("Event Start: " + event[1])
+    console.log("Event End: " + event[2])
+  }
+
+</script>
 <div id='app'>
 </div>
 <br/>
 <br/>
 <div>
   <% @events_list.each do |event| %>
+  <% eventData = [event['name']['text'], event['start']['utc'], event['end']['utc']] %>
   <% if (event['logo'] != nil) %>
     <% logo = event['logo']['original']['url'] %>
-  <% else %>
-    <% logo = 'n/a' %>
-  <% end %>
-    <a><img class='event-logo' src="<%=logo%>" alt='image'/></a>
+    <p><img class='event-logo' src="<%=logo%>" alt='image'/></p>
     <div class='event-container'>
-      <a> <%= event['name']['text']%> </a>
+      <a onclick="addEvent(<%= eventData %>)" class='event-name'> <%= event['name']['text']%> </a>
     </div>
     <div class='description-container'>
     <p><%= event['description']['text'] %></p>
@@ -20,5 +26,16 @@
     </div>
     <br/>
     <br/>
+  <% else %>
+    <div class='event-container'>
+      <a onclick="addEvent(<%= eventData %>)" class='event-name'> <%= event['name']['text']%> </a>
+    </div>
+    <div class='description-container'>
+    <p><%= event['description']['text'] %></p>
+    <p class='event-start-end'>Event Start: <%= event['start']['utc'] %> | Event End: <%= event['end']['utc'] %></p>
+    </div>
+    <br/>
+    <br/>
+  <% end %>
   <% end %>
 </div>
