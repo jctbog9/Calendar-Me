@@ -9,7 +9,9 @@
 
 .event-container:hover {
   transform: scale(1.25);
-  background-color: lightyellow;
+  background-color: #0569B2;
+  color: #D12B2D;
+  border-color: #D12B2D;
 }
 
 .event-logo {
@@ -35,4 +37,19 @@
   font-style: italic;
   padding: 0;
   margin: 0;
+}
+
+.index-title {
+  text-align: center;
+  color: #0569B2;
+}
+
+.calendar {
+  padding: 2px;
+  border: 1px;
+  margin: 10px;
+}
+
+.top-bar {
+  background-color: #0569B2;
 }
