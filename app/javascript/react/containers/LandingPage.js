@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Calendar from './Calendar';
-import EventBrite from './EventBrite'
+import EventsContainer from './EventsContainer'
 
 class LandingPage extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class LandingPage extends Component {
     return(
       <div>
         <Calendar />
-        <EventBrite />
+        <EventsContainer />
       </div>
     )
   }

@@ -1,7 +1,7 @@
 import React from 'react'
-import EventBriteTile from '../components/EventBriteTile'
+import EventTile from '../components/EventTile'
 
-class EventBrite extends React.Component {
+class EventsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -9,12 +9,12 @@ class EventBrite extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this)
   }
-  componentWillMount() {
-    fetch('https://www.eventbriteapi.com/v3/events/search/?location.address=boston&subcategories=2003%2C2001%2C2002&search_type=networking&token=JLHHNB4KRCZWR7WZPKAY')
+  componentDidMount() {
+    fetch('api/v1/events')
     .then(response => response.json())
     .then(body => {
       this.setState({
-        events: body.events
+        events: body
       })
     })
   }
@@ -25,23 +25,34 @@ class EventBrite extends React.Component {
 
   handleClick(event) {
     event.preventDefault()
+    debugger
 
   }
   render () {
     let event = this.state.events.map(event => {
       let logo;
-      debugger
-      if(event.logo != null) {
-        logo = event.logo.original.url
+      let url;
+      if(event.logo != undefined) {
+        logo = event.url
       } else {logo = "N/A"}
+
+      if(event.url != null) {
+        url = event.url
+      } else {url = "N/A"}
+
       return(
-        <EventBriteTile
+        <EventTile
           key={event.id}
           id={event.id}
-          name={event.name.text}
-          description={event.description.text}
-          url={event.url}
+          name={event.name}
+          description={event.description}
+          url={url}
           logo={logo}
+          date={event.date}
+          time={event.time}
+          end_time={event.end_time}
+          all_day={event.add_day}
+          ticket_price={event.ticket_price}
           handleClick={this.handleClick}
         />
       )
@@ -56,4 +67,4 @@ class EventBrite extends React.Component {
   }
 }
 
-export default EventBrite;
+export default EventsContainer;
