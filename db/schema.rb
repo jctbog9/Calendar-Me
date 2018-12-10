@@ -17,15 +17,19 @@ ActiveRecord::Schema.define(version: 2018_11_16_171703) do
 
   create_table "events", force: :cascade do |t|
     t.string "name", null: false
-    t.string "address", null: false
-    t.string "city", null: false
-    t.string "state", null: false
-    t.string "zip", null: false
-    t.string "date", null: false
-    t.string "start_time", null: false
+    t.string "address", default: "No Address Provided", null: false
+    t.string "city", default: "No Address Provided", null: false
+    t.string "state", default: "No Address Provided", null: false
+    t.string "zip", default: "No Address Provided", null: false
+    t.date "date", null: false
+    t.string "time", null: false
     t.string "end_time"
     t.string "description"
     t.string "ticket_price"
+    t.boolean "all_day", default: false, null: false
+    t.string "url"
+    t.string "logo"
+    t.string "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
