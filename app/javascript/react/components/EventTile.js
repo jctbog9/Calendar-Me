@@ -10,12 +10,15 @@ const EventTile = (props) => {
 
 
   return (
-    <div>
-      <li>
-        <a className='eventName' onClick={props.handleClick}>{props.name}</a>
-        <p>{props.description}</p>
-        <a href={props.url}>Event Details</a>
-      </li>
+    <div className="event-container">
+      <div className="event-centerize">
+        <li>{props.name}</li>
+        <li>{props.date}</li>
+        <li>{props.time}</li>
+        <li>{props.location}</li>
+        <button href={props.url} className="button">Event Details</button>
+        <button className="button">Add to calendar</button>
+      </div>
     </div>
   )
 }
