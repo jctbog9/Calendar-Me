@@ -27,6 +27,7 @@ class Calendar extends Component {
         title: 'All Day Event',
       },
     ];
+    console.log(moment().toDate());
     return (
       <div>
         <h1 className='index-title'>Calendar Me</h1>
