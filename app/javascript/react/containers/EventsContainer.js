@@ -47,6 +47,7 @@ class EventsContainer extends React.Component {
     })
     return(
       <div className="events-holder">
+        <h2>Suggested Events</h2>
         {events}
       </div>
     )
