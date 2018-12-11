@@ -27,16 +27,20 @@ class Calendar extends Component {
         title: 'All Day Event',
       },
     ];
+    console.log(moment().toDate());
     return (
-       <div className='grid-x grid-margin-x calendar-container'>
-            <BigCalendar
-              localizer={localizer}
-              events={dummyEvents}
-              startAccessor="start"
-              endAccessor="end"
-              defaultDate={moment().toDate()}
-            />
+      <div>
+        <h1 className='index-title'>Calendar Me</h1>
+        <div className='grid-x grid-margin-x calendar-container'>
+          <BigCalendar
+            localizer={localizer}
+            events={dummyEvents}
+            startAccessor="start"
+            endAccessor="end"
+            defaultDate={moment().toDate()}
+          />
        </div>
+      </div>
     )
   }
 }

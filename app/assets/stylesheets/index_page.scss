@@ -1,0 +1,67 @@
+.index-title {
+  text-align: center;
+  color: #0569B2;
+}
+
+.top-bar {
+  background-color: #0569B2;
+}
+
+.events-holder {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.event-container {
+  border: 1px solid black;
+  width: 25%;
+  margin: 10px;
+  float: left;
+}
+
+.event-container button{
+  width: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
+}
+
+.event-container li{
+  list-style: none;
+}
+
+.event-centerize {
+  text-align: center;
+}
+
+.event-logo {
+  width: 20%;
+  margin-left: 40%;
+  margin-bottom: 15px;
+  border: 1px solid black;
+  border-radius: 40px;
+}
+
+.description-container {
+  border: 1px solid black;
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1%;
+}
+
+.event-start-end {
+  font-size: 9pt;
+  font-style: italic;
+  padding: 0;
+  margin: 0;
+}
+
+.suggested-box {
+  border: 1px solid #000000;
+}
