@@ -1,5 +1,7 @@
 class Api::V1::EventsController < ApplicationController
   def index
+    Nehra.scrape
+    binding.pry
   end
 
   def create

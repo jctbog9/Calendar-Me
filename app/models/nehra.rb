@@ -1,5 +1,4 @@
 require 'pry'
-require 'HTTParty'
 require 'nokogiri'
 
 class Nehra
