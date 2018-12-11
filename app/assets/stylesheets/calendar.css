@@ -1,5 +1,8 @@
 .calendar-container {
   height: 500px;
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
 }
 
 rbc-btn {

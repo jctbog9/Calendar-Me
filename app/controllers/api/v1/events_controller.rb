@@ -2,6 +2,8 @@ class Api::V1::EventsController < ApplicationController
   def index
     Nehra.scrape
     binding.pry
+
+    render json: Event.all
   end
 
   def create
