@@ -93,6 +93,8 @@ class Nehra
           url: event_url
         }
         events.push(event)
+
+        Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, description: event_description, url: event_url)
       end
     end
     parsed_events = []

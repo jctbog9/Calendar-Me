@@ -16,7 +16,7 @@ const EventTile = (props) => {
         <li>{props.date}</li>
         <li>{props.time}</li>
         <li>{props.location}</li>
-        <button href={props.url} className="button">Event Details</button>
+        <a href={props.url} className="button">Event Details</a>
         <button className="button">Add to calendar</button>
       </div>
     </div>
