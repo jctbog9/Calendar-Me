@@ -27,6 +27,7 @@ class Calendar extends Component {
         title: 'All Day Event',
       },
     ];
+    console.log(moment().toDate());
     return (
        <div className='grid-x grid-margin-x calendar-container'>
             <BigCalendar
