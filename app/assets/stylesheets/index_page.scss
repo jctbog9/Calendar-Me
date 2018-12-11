@@ -1,17 +1,31 @@
-.event-container {
-  border: 2px solid black;
-  width: 50%;
-  margin-left: 25%;
-  text-align: center;
-  border-radius: 10px;
-  padding: 1%;
+.events-holder {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
-.event-container:hover {
-  transform: scale(1.25);
-  background-color: #0569B2;
-  color: #D12B2D;
-  border-color: #D12B2D;
+.event-container {
+  border: 1px solid black;
+  width: 25%;
+  margin: 10px;
+  float: left;
+}
+
+.event-container button{
+  width: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  float: left;
+}
+
+.event-container li{
+  list-style: none;
+}
+
+.event-centerize {
+  text-align: center;
 }
 
 .event-logo {
@@ -23,7 +37,7 @@
 }
 
 .description-container {
-  border: 2px solid black;
+  border: 1px solid black;
   width: 80%;
   margin-left: 10%;
   margin-top: 20px;
@@ -42,12 +56,6 @@
 .index-title {
   text-align: center;
   color: #0569B2;
-}
-
-.calendar {
-  padding: 2px;
-  border: 1px;
-  margin: 10px;
 }
 
 .top-bar {

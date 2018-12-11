@@ -5,9 +5,8 @@ class EventsContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        events: []
+      events: []
     }
-    this.handleClick = this.handleClick.bind(this)
   }
   componentDidMount() {
     fetch('api/v1/events')
@@ -19,17 +18,8 @@ class EventsContainer extends React.Component {
     })
   }
 
-  addEvent(payLoad) {
-
-  }
-
-  handleClick(event) {
-    event.preventDefault()
-    debugger
-
-  }
   render () {
-    let event = this.state.events.map(event => {
+    let events = this.state.events.map(event => {
       let logo;
       let url;
       if(event.logo != undefined) {
@@ -46,22 +36,18 @@ class EventsContainer extends React.Component {
           id={event.id}
           name={event.name}
           description={event.description}
+          location={event.location}
           url={url}
           logo={logo}
           date={event.date}
           time={event.time}
-          end_time={event.end_time}
-          all_day={event.add_day}
           ticket_price={event.ticket_price}
-          handleClick={this.handleClick}
         />
       )
     })
     return(
-      <div>
-        <ol>
-          {event}
-        </ol>
+      <div className="events-holder">
+        {events}
       </div>
     )
   }
