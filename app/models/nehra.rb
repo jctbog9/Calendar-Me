@@ -29,7 +29,7 @@ class Nehra
           if date[1].length === 1
             date[1] = "0#{date[1]}"
           end
-          event_date = "#{date[2]}-#{date[1]}-#{date[0]}"
+          event_date = "#{date[2]}-#{date[0]}-#{date[1]}"
           unparsed_time = event_info.css('td')[4].text.strip
           find_colon = unparsed_time.index(':')
           find_am = unparsed_time.index('am')
