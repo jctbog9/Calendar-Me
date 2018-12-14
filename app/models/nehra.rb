@@ -9,7 +9,6 @@ class Nehra
     unparsed_events_list = parsed_page.css('table')[1]
     events_list = unparsed_events_list.css('a')
     events_list.pop
-    events = []
 
     events_list.each do |row|
       if row.attributes['href'].value != '#'
