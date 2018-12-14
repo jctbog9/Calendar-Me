@@ -9,7 +9,6 @@ class Nehra
     unparsed_events_list = parsed_page.css('table')[1]
     events_list = unparsed_events_list.css('a')
     events_list.pop
-    events = []
 
     events_list.each do |row|
       if row.attributes['href'].value != '#'
@@ -81,33 +80,10 @@ class Nehra
             info_counter += 2
           end
         end
-        event_location_name =
-        event_description = event_info.css('td')[11].text.strip
 
-        event = {
-          name: event_name,
-          date: event_date,
-          time: event_time,
-          location: event_location,
-          description: event_description,
-          url: event_url
-        }
-        events.push(event)
-
-        Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, description: event_description, url: event_url)
+        Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, url: event_url)
       end
     end
-    parsed_events = []
-    events.each do |event|
-      if !event[:date].include? "to"
-        parsed_events.push(event)
-      end
-    end
-    # parsed_events.each do |event|
-    #   puts event
-    #   puts "\n\n-------------------------------------\n\n"
-    # end
-    return parsed_events
   end
 end
 
