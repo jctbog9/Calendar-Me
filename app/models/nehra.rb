@@ -1,5 +1,6 @@
 require 'pry'
 require 'nokogiri'
+require 'HTTParty'
 
 class Nehra
   def self.scrape
@@ -29,7 +30,7 @@ class Nehra
           if date[1].length === 1
             date[1] = "0#{date[1]}"
           end
-          event_date = "#{date[2]}-#{date[1]}-#{date[0]}"
+          event_date = "#{date[2]}-#{date[0]}-#{date[1]}"
           unparsed_time = event_info.css('td')[4].text.strip
           find_colon = unparsed_time.index(':')
           find_am = unparsed_time.index('am')
@@ -92,9 +93,12 @@ class Nehra
             end
           end
 
-          Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, url: event_url)
+          # Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, url: event_url)
+          puts event_date
         end
       end
     end
   end
 end
+
+Nehra.scrape
