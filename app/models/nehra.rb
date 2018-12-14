@@ -1,6 +1,5 @@
 require 'pry'
 require 'nokogiri'
-require 'HTTParty'
 
 class Nehra
   def self.scrape
@@ -93,12 +92,9 @@ class Nehra
             end
           end
 
-          # Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, url: event_url)
-          puts event_date
+          Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, url: event_url)
         end
       end
     end
   end
 end
-
-Nehra.scrape
