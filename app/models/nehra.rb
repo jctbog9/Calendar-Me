@@ -1,5 +1,4 @@
 require 'pry'
-require 'HTTParty'
 require 'nokogiri'
 
 class Nehra
@@ -99,5 +98,3 @@ class Nehra
     end
   end
 end
-
-Nehra.scrape
