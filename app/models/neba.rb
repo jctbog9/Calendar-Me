@@ -1,4 +1,4 @@
-require 'pry'
+
 require 'nokogiri'
 
 class Neba
