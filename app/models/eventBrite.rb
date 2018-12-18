@@ -8,10 +8,9 @@ require 'httparty'
     name: event['name']['text'],
     description: event['description']['text'],
     time: time,
-    end_time: end_time,
     date: event['start']['utc'],
     url: event['url'],
-    eventId: event['id']
+    event_id: event['id']
   }
   Event.create!(eventData)
 end
