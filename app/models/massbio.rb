@@ -1,7 +1,6 @@
 require 'nokogiri'
 require 'pry'
 
-
 class Massbio
   def self.scrape
     events_page = "https://www.massbio.org/events/listing"
@@ -42,8 +41,7 @@ class Massbio
           end
           event_location = event.css("address.Address").text.gsub(/\s+/, " ")
 
-          Event.find_or_create_by(name: event_name, date: event_date.strftime("%-m/%-d/%Y"), time: event_time, location: event_location, url: event_url)
-
+          Event.find_or_create_by(name: event_name, date: event_date.strftime("%Y-%m-%d"), time: event_time, location: event_location, url: event_url)
         end
       end
     page += 1

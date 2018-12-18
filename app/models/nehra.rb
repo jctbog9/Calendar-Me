@@ -9,6 +9,7 @@ class Nehra
     unparsed_events_list = parsed_page.css('table')[1]
     events_list = unparsed_events_list.css('a')
     events_list.pop
+
     events_list.each do |row|
       if row.attributes['href'].value != '#'
         event_path = row.attributes['href'].value
@@ -16,6 +17,7 @@ class Nehra
         event_unparsed_page = HTTParty.get(event_url)
         event_parsed_page = Nokogiri::HTML(event_unparsed_page)
         event_info = event_parsed_page.css('table')[1]
+
         if !event_info.css('td')[2].text.include? "to"
           event_title = event_parsed_page.css('table')[0]
           event_name = event_title.css('tr')[0].text.strip
@@ -68,9 +70,11 @@ class Nehra
           else
             event_time = "Time not specified"
           end
+
           event_address = event_info.css('td')[6]
           event_location = ""
           info_counter = 0
+
           if event_address.children[0].text.strip === "Online"
             event_location = "Online"
           elsif event_address.children[0].text.strip != "Online" && event_address.children[3].text.strip === ""
@@ -87,6 +91,7 @@ class Nehra
               info_counter += 2
             end
           end
+
           Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, url: event_url)
         end
       end
