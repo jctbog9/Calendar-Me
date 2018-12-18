@@ -21,7 +21,12 @@ class Massbio
         if !event.css("span.Property.date")[1]
           event_name = event.css("a.Listing-Title.Listing-Link").text.strip
           path = event.css("a.Listing-Title")[0].attributes["href"].value
-          event_url = "https://www.massbio.org#{path}"
+          if path.include? 'http'
+            event_url = path
+          else
+            event_url = "https://www.massbio.org#{path}"
+          end
+          binding.pry
           date = event.css("span.Property.date")[0].text.strip
           event_date = Date.parse(date)
           event_time = ""

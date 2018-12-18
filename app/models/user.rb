@@ -10,4 +10,8 @@ class User < ApplicationRecord
 
   has_many :signups
   has_many :events, through: :signups
+
+  def admin?
+    role == "admin"
+  end
 end
