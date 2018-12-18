@@ -1,19 +1,18 @@
 require 'pry'
 require 'nokogiri'
 
-class Nehra
+class Neba
   def self.scrape
-    events_page = "https://www.nehra.com/events/event_list.asp"
+    events_page = "https://newenglandbusiness.org/events/event_list.asp"
     unparsed_page = HTTParty.get(events_page)
     parsed_page = Nokogiri::HTML(unparsed_page)
     unparsed_events_list = parsed_page.css('table')[1]
     events_list = unparsed_events_list.css('a')
-    events_list.pop
 
     events_list.each do |row|
       if row.attributes['href'].value.include? "EventDetail"
         event_path = row.attributes['href'].value
-        event_url = "https://www.nehra.com#{event_path}"
+        event_url = "https://newenglandbusiness.org#{event_path}"
         event_unparsed_page = HTTParty.get(event_url)
         event_parsed_page = Nokogiri::HTML(event_unparsed_page)
         event_info = event_parsed_page.css('table')[1]
