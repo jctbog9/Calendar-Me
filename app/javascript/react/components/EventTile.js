@@ -33,7 +33,7 @@ class EventTile extends Component {
 
   handleUndo(){
     this.setState({ clicked: false })
-    fetch(`/api/v1/all_signups/${this.props.id}`, {
+    fetch(`/api/v1/signups/${this.props.id}`, {
       method: 'DELETE',
       headers: {
         'Accept': 'application/json',

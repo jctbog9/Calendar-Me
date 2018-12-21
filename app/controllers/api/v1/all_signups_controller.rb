@@ -9,17 +9,10 @@ class Api::V1::AllSignupsController < ApplicationController
     Signup.find_or_create_by!(signup_params)
   end
 
-  def destroy
-    binding.pry
-  end
-
   private
 
   def signup_params
     params.permit(:user_id, :event_id)
   end
 
-  def destroy_signup_params
-    params.permit(:event_id)
-  end
 end
