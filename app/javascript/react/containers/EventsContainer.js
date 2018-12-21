@@ -9,6 +9,7 @@ class EventsContainer extends Component {
     }
     this.handleAddEvent = this.handleAddEvent.bind(this)
     this.handleCloseEvent = this.handleCloseEvent.bind(this)
+    this.undoButtonClick = this.undoButtonClick.bind(this)
   }
 
   handleAddEvent(formPayload){
@@ -17,6 +18,10 @@ class EventsContainer extends Component {
 
   handleCloseEvent(closedPayload){
     this.props.removeSuggestedEvent(closedPayload)
+  }
+
+  undoButtonClick(undoPayload){
+    this.props.undoButtonClick(undoPayload)
   }
 
   render () {
@@ -46,6 +51,7 @@ class EventsContainer extends Component {
           ticket_price={event.ticket_price}
           addEventToCalendar={this.handleAddEvent}
           closeEvent={this.handleCloseEvent}
+          undoButtonClick={this.undoButtonClick}
         />
       )
     })

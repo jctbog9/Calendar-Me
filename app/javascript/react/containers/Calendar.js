@@ -14,16 +14,6 @@ class Calendar extends Component {
   }
 
   componentDidMount(){
-    fetch('api/v1/signups')
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        events: body
-      })
-    })
-  }
-
-  componentDidMount(){
     fetch(`/api/v1/signups`)
       .then(response => {
         if (response.ok) {
