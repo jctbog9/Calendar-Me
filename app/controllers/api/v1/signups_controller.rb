@@ -1,12 +1,12 @@
 class Api::V1::SignupsController < ApplicationController
 
-  def create
-    @signup = Signup.new(signup_params)
+  def index
+    render json: current_user.signups
   end
 
-  private
-
-  def signup_params
-    params.permit(:user_id, :event_id)
+  def destroy
+    @destroy_signup = Signup.where(user_id: current_user.id, event_id: params[:id])
+    @destroy_signup[0].destroy
   end
+
 end

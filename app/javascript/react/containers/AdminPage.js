@@ -62,6 +62,7 @@ class AdminPage extends Component {
             handleChange={this.handleChange}
             selectedUser={this.state.selectedUser}
           />}
+
           <div className="cell admin-add-user">
             <p onClick={this.displayElements} name="showElements" id="admin-add-user">Add User</p>
           </div>

@@ -1,25 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import EventTile from '../components/EventTile'
 
-class EventsContainer extends React.Component {
+class EventsContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
       events: []
     }
+    this.handleAddEvent = this.handleAddEvent.bind(this)
+    this.handleCloseEvent = this.handleCloseEvent.bind(this)
   }
-  componentDidMount() {
-    fetch('api/v1/events')
-    .then(response => response.json())
-    .then(body => {
-      this.setState({
-        events: body
-      })
-    })
+
+  handleAddEvent(formPayload){
+    this.props.addEventToCalendar(formPayload)
+  }
+
+  handleCloseEvent(closedPayload){
+    this.props.removeSuggestedEvent(closedPayload)
   }
 
   render () {
-    let events = this.state.events.map(event => {
+    let events = this.props.suggestedEvents.map(event => {
       let logo;
       let url;
       if(event.logo != undefined) {
@@ -34,6 +35,7 @@ class EventsContainer extends React.Component {
         <EventTile
           key={event.id}
           id={event.id}
+          event={event}
           name={event.name}
           description={event.description}
           location={event.location}
@@ -42,6 +44,8 @@ class EventsContainer extends React.Component {
           date={event.date}
           time={event.time}
           ticket_price={event.ticket_price}
+          addEventToCalendar={this.handleAddEvent}
+          closeEvent={this.handleCloseEvent}
         />
       )
     })

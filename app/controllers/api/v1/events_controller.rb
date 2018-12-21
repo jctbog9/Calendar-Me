@@ -1,6 +1,14 @@
 class Api::V1::EventsController < ApplicationController
   def index
-    render json: Event.all
+    @events = Event.all
+    @rendered_events = []
+    @events.each do |event|
+      signups = event.signups
+      if signups.where(user_id: current_user.id).length == 0
+        @rendered_events << event
+      end
+    end
+    render json: @rendered_events
   end
 
   def create

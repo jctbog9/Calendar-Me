@@ -1,4 +1,3 @@
-require 'pry'
 require 'nokogiri'
 
 class Nehra
@@ -11,7 +10,7 @@ class Nehra
     events_list.pop
 
     events_list.each do |row|
-      if row.attributes['href'].value != '#'
+      if row.attributes['href'].value.include? "EventDetail"
         event_path = row.attributes['href'].value
         event_url = "https://www.nehra.com#{event_path}"
         event_unparsed_page = HTTParty.get(event_url)
