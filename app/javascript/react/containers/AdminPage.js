@@ -56,12 +56,12 @@ class AdminPage extends Component {
           <div className="cell admin-users">
             <p id="admin-users">Users</p>
             <a onClick={this.displayElements} name="showElements" id='show-admin-users'>Show</a>
-            {this.state.showElements === 'show-admin-users' && <AdminSelectUser
-              users={this.state.users}
-              handleChange={this.handleChange}
-              selectedUser={this.state.selectedUser}
-            />}
           </div>
+          {this.state.showElements === 'show-admin-users' && <AdminSelectUser
+            users={this.state.users}
+            handleChange={this.handleChange}
+            selectedUser={this.state.selectedUser}
+          />}
           <div className="cell admin-add-user">
             <p onClick={this.displayElements} name="showElements" id="admin-add-user">Add User</p>
           </div>

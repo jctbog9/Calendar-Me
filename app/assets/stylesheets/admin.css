@@ -11,11 +11,7 @@
   border-top: 2px solid black;
 }
 
-#admin-users {
-  display: inline-block;
-  margin-right: 38.5rem;
-}
-
-#show-admin-users {
-  display: inline-block;
+.admin-users {
+  display: flex;
+  justify-content: space-between;
 }
