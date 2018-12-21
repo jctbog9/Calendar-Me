@@ -10,6 +10,7 @@ class LandingPage extends Component {
       suggestedEvents: []
     }
     this.addEventToCalendar = this.addEventToCalendar.bind(this)
+    this.removeSuggestedEvent = this.removeSuggestedEvent.bind(this)
   }
 
   componentDidMount() {
@@ -24,7 +25,6 @@ class LandingPage extends Component {
 
   addEventToCalendar(formPayload){
     this.setState({events: this.state.events.concat(formPayload)})
-    this.setState({suggestedEvents: this.state.suggestedEvents.filter(event => event.id !== formPayload.id)})
     let signup = {
       user_id: window.currentUser.id,
       event_id: formPayload.id
@@ -51,6 +51,10 @@ class LandingPage extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  removeSuggestedEvent(closedPayload){
+    this.setState({ suggestedEvents: this.state.suggestedEvents.filter(event => closedPayload !== event.id) })
+  }
+
   render() {
     return(
       <div>
@@ -58,6 +62,7 @@ class LandingPage extends Component {
           addedEvents={this.state.events}
         />
         <EventsContainer
+          removeSuggestedEvent={this.removeSuggestedEvent}
           suggestedEvents={this.state.suggestedEvents}
           addEventToCalendar={this.addEventToCalendar}
         />

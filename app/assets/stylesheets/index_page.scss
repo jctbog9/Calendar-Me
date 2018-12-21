@@ -21,6 +21,15 @@
   float: left;
 }
 
+.event-container-clicked {
+  border: 1px solid black;
+  width: 30%;
+  height: 270px;
+  margin: 10px;
+  float: left;
+  background-color: #8EC5E2;
+}
+
 .button{
   width: 40%;
   margin-left: 5%;
@@ -65,4 +74,30 @@
 
 .suggested-box {
   border: 1px solid #000000;
+}
+
+.fas.fa-times:hover {
+   cursor: pointer;
+}
+
+.fas.fa-times {
+  margin-top: 5px;
+  margin-left: 90%;
+}
+
+.undo-button {
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+  height: 30%;
+}
+
+.added-succesfully {
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  margin-bottom: 10px;
 }
