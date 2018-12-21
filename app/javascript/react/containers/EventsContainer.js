@@ -1,17 +1,22 @@
-import React from 'react'
+import React, { Component } from 'react'
 import EventTile from '../components/EventTile'
 
-class EventsContainer extends React.Component {
+class EventsContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
       events: []
     }
     this.handleAddEvent = this.handleAddEvent.bind(this)
+    this.handleCloseEvent = this.handleCloseEvent.bind(this)
   }
 
   handleAddEvent(formPayload){
     this.props.addEventToCalendar(formPayload)
+  }
+
+  handleCloseEvent(closedPayload){
+    this.props.removeSuggestedEvent(closedPayload)
   }
 
   render () {
@@ -40,6 +45,7 @@ class EventsContainer extends React.Component {
           time={event.time}
           ticket_price={event.ticket_price}
           addEventToCalendar={this.handleAddEvent}
+          closeEvent={this.handleCloseEvent}
         />
       )
     })

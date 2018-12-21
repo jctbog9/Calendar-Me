@@ -14,4 +14,5 @@ class Api::V1::AllSignupsController < ApplicationController
   def signup_params
     params.permit(:user_id, :event_id)
   end
+
 end

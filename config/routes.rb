@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :events, only: [:index, :create]
-      resources :signups, only: [:index, :create]
-      resources :all_signups, only: [:index, :create]
+      resources :signups, only: [:index, :show, :destroy, :create]
+      resources :all_signups, only: [:index, :create, :delete]
     end
   end
 end
