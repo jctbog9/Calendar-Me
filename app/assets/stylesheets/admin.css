@@ -2,3 +2,20 @@
   margin-top: 3rem;
   border-top: 2px solid black;
 }
+
+.admin-add-user {
+  border-top: 2px solid black;
+}
+
+.admin-edit-user {
+  border-top: 2px solid black;
+}
+
+#admin-users {
+  display: inline-block;
+  margin-right: 38.5rem;
+}
+
+#show-admin-users {
+  display: inline-block;
+}
