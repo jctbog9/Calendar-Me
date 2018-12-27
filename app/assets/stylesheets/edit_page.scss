@@ -1,0 +1,36 @@
+.edit-box-wrapper {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-color: #FFFFFF;
+  border-left: 1px solid #ECE5E5;
+  border-right: 1px solid #ECE5E5;
+}
+
+.edit-box {
+  height: 80px;
+  border: 1px solid #000000;
+}
+
+.edit-box p{
+  float: left;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding-left: 10px;
+}
+
+.delete-button {
+  float: right;
+  background-color: #B53737
+}
+
+.delete-button:hover {
+  background-color: #9E1A1A
+}
+
+.back-button-center {
+  width: 30%;
+  margin-top: 20px;
+  margin-left: 35%;
+  margin-right: 35%;
+}
