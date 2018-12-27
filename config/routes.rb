@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       resources :all_signups, only: [:index, :create, :delete]
     end
   end
+
+  get '/my-events', to: 'events#index'
 end
