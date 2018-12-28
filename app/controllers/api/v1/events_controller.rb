@@ -1,4 +1,6 @@
 class Api::V1::EventsController < ApplicationController
+  protect_from_forgery unless: -> {request.format.json?}
+
   def index
     @events = Event.all
     @rendered_events = []
@@ -12,13 +14,14 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    Event.find_or_create_by(event_params)
+    render Event.all
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:name, :address, :city, :state, :zip, :date, :time, :end_time, :description, :ticket_price, :logo, :url, :all_day)
+    params.require(:event).permit(:name, :location, :date, :time, :url)
   end
 
 end

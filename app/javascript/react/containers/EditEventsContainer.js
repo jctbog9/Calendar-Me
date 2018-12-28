@@ -56,6 +56,7 @@ class EditEventsContainer extends Component {
         <div key={event.id} className="edit-box">
           <p>{event.event.name} - </p>
           <p>{date}</p>
+          <a href={event.event.url} target="_blank"><button className="delete-button">Event Details</button></a>
           <button className="delete-button" onClick={handleSignupDelete}>Delete Event</button>
         </div>
       )
