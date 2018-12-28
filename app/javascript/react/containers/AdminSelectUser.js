@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SelectTile from '../components/SelectTile';
 import AdminUserCalendar from './AdminUserCalendar';
-import AdminAddUser from './AdminAddUser';
+// import AdminEditUser from './AdminEditUser';
 
 class AdminSelectUser extends Component {
   constructor(props) {
@@ -40,7 +40,7 @@ class AdminSelectUser extends Component {
         {this.props.selectedUserId != "" && <AdminUserCalendar
             selectedUserId={this.props.selectedUserId}
             users={this.props.users}
-          />}
+        />}
       </div>
     )
   }

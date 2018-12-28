@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AdminAddUser extends Component {
+class AdminEditUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -154,4 +154,4 @@ class AdminAddUser extends Component {
   }
 }
 
-export default AdminAddUser;
+export default AdminEditUser;

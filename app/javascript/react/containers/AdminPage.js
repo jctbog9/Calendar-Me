@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AdminSelectUser from './AdminSelectUser';
+import AdminAddUser from './AdminAddUser';
 
 class AdminPage extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class AdminPage extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.displayElements = this.displayElements.bind(this);
+    this.addUser = this.addUser.bind(this);
   }
 
   displayElements(event) {
@@ -23,6 +25,32 @@ class AdminPage extends Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value});
+  }
+
+  addUser(formPayload) {
+    fetch("api/v1/admin", {
+      method: "POST",
+      body: JSON.stringify(formPayload),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+          error = new Error(errorMessage);
+        throw error;
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      this.setState({ users: response });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
 
@@ -62,11 +90,13 @@ class AdminPage extends Component {
             selectedUserId={this.state.selectedUserId}
           />}
           <div className="cell admin-add-user">
-            <p onClick={this.displayElements} name="showElements" id="admin-add-user">Add User</p>
+            <p id="admin-add-user">Add User</p>
+            <a onClick={this.displayElements} name="showElements" id='show-admin-add-user'>Show</a>
           </div>
-          <div className="cell admin-edit-user">
-            <p onClick={this.displayElements} name="showElements" id="admin-edit-user">Edit User</p>
-          </div>
+          {this.state.showElements === 'show-admin-add-user' && <AdminAddUser
+            handleChange={this.handleChange}
+            addUser={this.addUser}
+          />}
         </div>
       </div>
     )

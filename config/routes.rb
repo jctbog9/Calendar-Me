@@ -10,18 +10,7 @@ Rails.application.routes.draw do
       resources :events, only: [:index, :create]
       resources :signups, only: [:index, :show, :destroy, :create]
       resources :all_signups, only: [:index, :create, :delete]
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
       resources :admin, only: [:index, :create]
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
-      resources :test, only: [:index, :create]
     end
   end
 

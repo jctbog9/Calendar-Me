@@ -34,7 +34,7 @@ class Calendar extends Component {
     }
     return (
       <div>
-        <h1 className='index-title'>{window.currentUser.first_name}'s Calendar</h1>
+        <h1 className='index-title'>{`${selectedUser.first_name} ${selectedUser.last_name}'s Calendar`}</h1>
         <div className='grid-x grid-margin-x calendar-container'>
           <BigCalendar
             localizer={localizer}

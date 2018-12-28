@@ -3,10 +3,21 @@ class Api::V1::AdminController < ApplicationController
     render json: User.all
   end
 
+  def create
+    new_user = User.new(admin_params)
+    new_user.password = "#{new_user.first_name}#{new_user.last_name}"
+
+    if new_user.save!
+			render json: User.all
+		else
+			render json: {error: new_user.errors.full_messages.join(', ') }, status: :unprocessable_entity
+		end
+  end
+
   private
 
-  def event_params
-    params.require(:event).permit(:name, :address, :city, :state, :zip, :date, :time, :end_time, :description, :ticket_price, :logo, :url, :all_day)
+  def admin_params
+    params.require(:admin).permit(:email, :first_name, :last_name, :business_phone, :personal_phone, :role)
   end
 
 end
