@@ -1,6 +1,8 @@
 .admin-users {
   margin-top: 3rem;
   border-top: 2px solid black;
+  display: flex;
+  justify-content: space-between;
 }
 
 .admin-add-user {
@@ -11,7 +13,9 @@
   border-top: 2px solid black;
 }
 
-.admin-users {
+.selected-user-calendar {
+  margin-top: 3rem;
+  border-top: 2px solid black;
   display: flex;
   justify-content: space-between;
 }

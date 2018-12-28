@@ -1,15 +1,6 @@
 class Api::V1::AdminController < ApplicationController
   def index
-    admin_info = {
-      events: Event.all,
-      users: User.all
-    }
-
-    render json: admin_info
-  end
-
-  def create
-    @event = Event.new(event_params)
+    render json: User.all
   end
 
   private

@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import SelectTile from '../components/SelectTile';
+import AdminUserCalendar from './AdminUserCalendar';
+import AdminAddUser from './AdminAddUser';
 
 class AdminSelectUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      showElements: ""
     };
+    this.displayElements = this.displayElements.bind(this);
+  }
 
+  displayElements(event) {
+    if (this.state.showElements != event.target.id) {
+      this.setState({ showElements: event.target.id });
+    } else {
+      this.setState({ showElements: "" });
+    }
   }
 
   render() {
@@ -23,11 +33,14 @@ class AdminSelectUser extends Component {
     });
     return(
       <div>
-        <select name="selectedUser" value={this.props.selectedUser} onChange={this.props.handleChange}>
-          <option value={0} name="selectedUser"></option>
+        <select name="selectedUserId" value={this.props.selectedUser} onChange={this.props.handleChange}>
+          <option value={0} name="selectedUserId"></option>
           {users}
         </select>
-        
+        {this.props.selectedUserId != "" && <AdminUserCalendar
+            selectedUserId={this.props.selectedUserId}
+            users={this.props.users}
+          />}
       </div>
     )
   }

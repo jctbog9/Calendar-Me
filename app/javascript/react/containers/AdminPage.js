@@ -7,7 +7,7 @@ class AdminPage extends Component {
     this.state = {
       users: [],
       showElements: "",
-      selectedUser: undefined
+      selectedUserId: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.displayElements = this.displayElements.bind(this);
@@ -19,12 +19,12 @@ class AdminPage extends Component {
     } else {
       this.setState({ showElements: "" });
     }
-
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value});
   }
+
 
   componentDidMount() {
     fetch('api/v1/admin',
@@ -42,14 +42,13 @@ class AdminPage extends Component {
     })
     .then(response => response.json())
     .then(response => {
-      let adminInfo = response;
-      this.setState({ users: adminInfo.users });
+      let users = response;
+      this.setState({ users: users });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
-    console.log(this.state.selectedUser)
     return(
       <div className="grid-x grid-margin-x">
         <div className="cell large-8 large-offset-2">
@@ -60,9 +59,8 @@ class AdminPage extends Component {
           {this.state.showElements === 'show-admin-users' && <AdminSelectUser
             users={this.state.users}
             handleChange={this.handleChange}
-            selectedUser={this.state.selectedUser}
+            selectedUserId={this.state.selectedUserId}
           />}
-
           <div className="cell admin-add-user">
             <p onClick={this.displayElements} name="showElements" id="admin-add-user">Add User</p>
           </div>

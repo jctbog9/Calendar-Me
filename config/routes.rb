@@ -19,5 +19,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      resources :test, only: [:index, :create]
+    end
+  end
+
   get '*path', to: 'homes#index'
 end
