@@ -1,36 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>CalendarMe</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+<head>
+  <title>CalendarMe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 
-      <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
 
-    <%= csrf_meta_tags %>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-  </head>
-  <body>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+</head>
+<body>
 
-    <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name">
-          <h1><a class='home-link' href="/">CalendarMe</a></h1>
-        </li>
-      </ul>
+  <nav class="top-bar">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a class='home-link' href="/">CalendarMe</a></h1>
+      </li>
+    </ul>
 
-      <section class="top-bar-section">
-        <ul class="right">
-          <%- if current_user -%>
-            <li><a><%= current_user.email %></a></li>
+    <section class="top-bar-section">
+      <ul class="right">
+        <% if current_user %>
+          <%- if current_user.role === 'member' -%>
+            <li><a>User Page</a></li>
             <li><a href="/my-events">My Events</a></li>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-          <%- else -%>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <%- end -%>
-        </ul>
-      </section>
-    </nav>
+          <% elsif current_user.role === 'admin' %>
+            <li><%= link_to 'Admin Page', '/admin' %></li>
+            <li><a href="/my-events">My Events</a></li>
+            <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <% end %>
+        <%- else -%>
+          <li><%= link_to 'Sign In', new_user_session_path %></li>
+        <%- end -%>
+      </ul>
+    </section>
+  </nav>
 
     <%- flash.each do |key, value| -%>
       <div class="flash flash-<%= key %>">
