@@ -11,6 +11,7 @@ class LandingPage extends Component {
     }
     this.addEventToCalendar = this.addEventToCalendar.bind(this)
     this.removeSuggestedEvent = this.removeSuggestedEvent.bind(this)
+    this.undoButtonClick = this.undoButtonClick.bind(this)
   }
 
   componentDidMount() {
@@ -55,6 +56,10 @@ class LandingPage extends Component {
     this.setState({ suggestedEvents: this.state.suggestedEvents.filter(event => closedPayload !== event.id) })
   }
 
+  undoButtonClick(undoPayload){
+    this.setState({ events: this.state.events.filter(event => undoPayload.id !== event.id) })
+  }
+
   render() {
     return(
       <div>
@@ -62,6 +67,7 @@ class LandingPage extends Component {
           addedEvents={this.state.events}
         />
         <EventsContainer
+          undoButtonClick={this.undoButtonClick}
           removeSuggestedEvent={this.removeSuggestedEvent}
           suggestedEvents={this.state.suggestedEvents}
           addEventToCalendar={this.addEventToCalendar}

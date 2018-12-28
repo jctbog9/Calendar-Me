@@ -25,14 +25,25 @@ class EventTile extends Component {
       date: this.props.date,
       time: this.props.time,
       description: this.props.description,
-      url: this.props.url,
-      event_id: this.props.event_id
+      url: this.props.url
     }
     this.props.addEventToCalendar(formPayload)
   }
 
   handleUndo(){
     this.setState({ clicked: false })
+    this.props.undoButtonClick(
+      {
+        id: this.props.id,
+        name: this.props.name,
+        location: this.props.location,
+        date: this.props.date,
+        time: this.props.time,
+        description: this.props.description,
+        url: this.props.url,
+        event_id: this.props.event_id
+      }
+    )
     fetch(`/api/v1/signups/${this.props.id}`, {
       method: 'DELETE',
       headers: {

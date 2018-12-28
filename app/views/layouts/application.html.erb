@@ -24,9 +24,11 @@
         <% if current_user %>
           <%- if current_user.role === 'member' -%>
             <li><a>User Page</a></li>
+            <li><a href="/my-events">My Events</a></li>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
           <% elsif current_user.role === 'admin' %>
             <li><%= link_to 'Admin Page', '/admin' %></li>
+            <li><a href="/my-events">My Events</a></li>
             <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
           <% end %>
         <%- else -%>

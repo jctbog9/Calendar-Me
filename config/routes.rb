@@ -14,5 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/my-events', to: 'events#index'
   get '*path', to: 'homes#index'
+
 end
