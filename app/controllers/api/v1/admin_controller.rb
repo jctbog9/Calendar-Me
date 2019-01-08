@@ -5,6 +5,7 @@ class Api::V1::AdminController < ApplicationController
 
   def create
     new_user = User.new(admin_params)
+    binding.pry
     new_user.password = "#{new_user.first_name}#{new_user.last_name}"
 
     if new_user.save!

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :events, only: [:index, :create]
       resources :signups, only: [:index, :show, :destroy, :create]
       resources :all_signups, only: [:index, :create, :delete]
+      resources :teams, only: [:index, :create, :delete]
       resources :admin, only: [:index, :create]
     end
   end

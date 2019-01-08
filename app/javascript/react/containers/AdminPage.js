@@ -1,30 +1,45 @@
 import React, { Component } from 'react';
 import AdminSelectUser from './AdminSelectUser';
 import AdminAddUser from './AdminAddUser';
+import AdminAddTeam from './AdminAddTeam';
+
+import ShowButton from '../components/ShowButton';
 
 class AdminPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       users: [],
-      showElements: "",
-      selectedUserId: ""
+      content: '',
+      selectedUserId: "",
     };
     this.handleChange = this.handleChange.bind(this);
-    this.displayElements = this.displayElements.bind(this);
     this.addUser = this.addUser.bind(this);
+    this.showAddUser = this.showAddUser.bind(this);
+    this.showSelectUser = this.showSelectUser.bind(this);
+    this.showAddTeam = this.showAddTeam.bind(this);
   }
 
-  displayElements(event) {
-    if (this.state.showElements != event.target.id) {
-      this.setState({ showElements: event.target.id });
-    } else {
-      this.setState({ showElements: "" });
-    }
-  }
-
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value});
+  componentDidMount() {
+    fetch('api/v1/admin',
+    {
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw error;
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      let users = response;
+      this.setState({ users: users });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   addUser(formPayload) {
@@ -42,7 +57,7 @@ class AdminPage extends Component {
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage);
+        error = new Error(errorMessage);
         throw error;
       }
     })
@@ -53,50 +68,104 @@ class AdminPage extends Component {
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
-
-  componentDidMount() {
-    fetch('api/v1/admin',
-    {
-      credentials: 'same-origin'
+  addTeam(formPayload) {
+    fetch("api/v1/teams", {
+      method: "POST",
+      body: JSON.stringify(formPayload),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
     })
     .then(response => {
       if (response.ok) {
         return response;
       } else {
         let errorMessage = `${response.status} (${response.statusText})`,
-          error = new Error(errorMessage);
+        error = new Error(errorMessage);
         throw error;
       }
     })
     .then(response => response.json())
     .then(response => {
-      let users = response;
-      this.setState({ users: users });
+      this.setState({ users: response });
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value});
+  }
+
+  showSelectUser(){
+    this.setState({ content: 'selectUser' })
+  }
+
+  showAddUser(){
+    this.setState({ content: 'addUser' })
+  }
+
+  showAddTeam(){
+    this.setState({ content: 'addTeam' })
+  }
+
   render() {
+
+    let content = <h2>Welcome {window.currentUser.first_name}</h2>
+
+    if (this.state.content === 'selectUser') {
+      content =
+      <div>
+        <AdminSelectUser
+          users={this.state.users}
+          handleChange={this.handleChange}
+          selectedUserId={this.state.selectedUserId}
+        />
+      </div>
+    }
+
+    if (this.state.content === 'addUser') {
+      content =
+      <div>
+        <AdminAddUser
+          handleChange={this.handleChange}
+          addUser={this.addUser}
+        />
+        <button onClick={this.showAddUser}>Hide</button>
+      </div>
+    }
+
+    if (this.state.content === 'addTeam') {
+      content =
+      <div>
+        <AdminAddTeam
+          handleChange={this.handleChange}
+          addTeam={this.addTeam}
+        />
+      </div>
+    }
+
     return(
-      <div className="grid-x grid-margin-x">
-        <div className="cell large-8 large-offset-2">
-          <div className="cell admin-users">
-            <p id="admin-users">Users</p>
-            <a onClick={this.displayElements} name="showElements" id='show-admin-users'>Show</a>
+      <div>
+        <div className="side-selectors">
+          <ShowButton
+            onClick={this.showSelectUser}
+            name="Select User"
+          />
+          <ShowButton
+            onClick={this.showAddUser}
+            name="Add User"
+          />
+          <ShowButton
+            onClick={this.showAddTeam}
+            name="Create Team"
+          />
+        </div>
+        <div className="content-wrapper">
+          <div className="centered-content">
+            {content}
           </div>
-          {this.state.showElements === 'show-admin-users' && <AdminSelectUser
-            users={this.state.users}
-            handleChange={this.handleChange}
-            selectedUserId={this.state.selectedUserId}
-          />}
-          <div className="cell admin-add-user">
-            <p id="admin-add-user">Add User</p>
-            <a onClick={this.displayElements} name="showElements" id='show-admin-add-user'>Show</a>
-          </div>
-          {this.state.showElements === 'show-admin-add-user' && <AdminAddUser
-            handleChange={this.handleChange}
-            addUser={this.addUser}
-          />}
         </div>
       </div>
     )

@@ -36,3 +36,31 @@
   display: flex;
   justify-content: space-between;
 }
+
+.side-selectors {
+  padding-top: 10px;
+  float: left;
+  width: 20%;
+  height: 100vh;
+  background-color: #008CBA;
+}
+
+.side-selectors button{
+  width: 100%;
+}
+
+.content-wrapper {
+  float: left;
+  width: 80%;
+}
+
+.content-wrapper h2{
+  text-align: center;
+}
+
+.centered-content {
+  width: 90%;
+  margin-top: 20px;
+  margin-left: 5%;
+  margin-right: 5%;
+}

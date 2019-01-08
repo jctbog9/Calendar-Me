@@ -9,7 +9,8 @@ class AdminAddUser extends Component {
       businessPhone: "",
       personalPhone: "",
       email: "",
-      role: ""
+      role: "",
+      successMessage: ""
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFormClear = this.handleFormClear.bind(this);
@@ -46,7 +47,7 @@ class AdminAddUser extends Component {
         email: this.state.email,
         role: this.state.role
       };
-
+      this.setState({ successMessage: "User succesfully created!"})
       this.props.addUser(formPayload);
       this.handleFormClear();
     }
@@ -54,102 +55,106 @@ class AdminAddUser extends Component {
 
   render() {
     return(
-      <form onSubmit={this.handleFormSubmit}>
-        <div className="grid-x">
-          <div className="first-and-last">
-            <div className="cell large-5">
-              <label>
-                First Name:
-                <input
-                  type="text"
-                  name="firstName"
-                  value={this.state.firstName}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </div>
-            <div className="cell large-6">
-              <label>
-                Last Name:
-                <input
-                  type="text"
-                  name="lastName"
-                  value={this.state.lastName}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </div>
-          </div>
-          <div className="phone-numbers">
-            <div className="cell large-5">
-              <label>
-                Business Phone:
-                <input
-                  type="text"
-                  name="businessPhone"
-                  value={this.state.businessPhone}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </div>
-            <div className="cell large-6">
-              <label>
-                Personal Phone:
-                <input
-                  type="text"
-                  name="personalPhone"
-                  value={this.state.personalPhone}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </div>
-          </div>
-          <div className="email-and-role">
-            <div className="cell large-8">
-              <label>
-                Email:
-                <input
-                  type="text"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-              </label>
-            </div>
-            <div className="cell large-3">
-              <label>
-                Role:
+      <div>
+        <h2>Create New User</h2>
+        <form onSubmit={this.handleFormSubmit}>
+          <div className="grid-x">
+            <div className="first-and-last">
+              {this.state.successMessage}
+              <div className="cell large-5">
                 <label>
+                  First Name:
                   <input
-                    type="radio"
-                    name="role"
-                    value="member"
+                    type="text"
+                    name="firstName"
+                    value={this.state.firstName}
                     onChange={this.handleChange}
                   />
-                  Member
                 </label>
+              </div>
+              <div className="cell large-6">
                 <label>
+                  Last Name:
                   <input
-                    type="radio"
-                    name="role"
-                    value="teamLeader"
+                    type="text"
+                    name="lastName"
+                    value={this.state.lastName}
                     onChange={this.handleChange}
                   />
-                  Team Leader
                 </label>
-              </label>
+              </div>
+            </div>
+            <div className="phone-numbers">
+              <div className="cell large-5">
+                <label>
+                  Business Phone:
+                  <input
+                    type="text"
+                    name="businessPhone"
+                    value={this.state.businessPhone}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+              <div className="cell large-6">
+                <label>
+                  Personal Phone:
+                  <input
+                    type="text"
+                    name="personalPhone"
+                    value={this.state.personalPhone}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+            </div>
+            <div className="email-and-role">
+              <div className="cell large-8">
+                <label>
+                  Email:
+                  <input
+                    type="text"
+                    name="email"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                  />
+                </label>
+              </div>
+              <div className="cell large-3">
+                <label>
+                  Role:
+                  <label>
+                    <input
+                      type="radio"
+                      name="role"
+                      value="member"
+                      onChange={this.handleChange}
+                    />
+                    Member
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="role"
+                      value="leader"
+                      onChange={this.handleChange}
+                    />
+                    Team Leader
+                  </label>
+                </label>
+              </div>
+            </div>
+            <div className="form-buttons">
+              <div className="cell large-5">
+                <input className="button tiny" type="submit" value="Add User" />
+              </div>
+              <div className="cell large-5">
+                <input className="button tiny" type="button" onClick={this.handleFormClear} value="Clear Form" />
+              </div>
             </div>
           </div>
-          <div className="form-buttons">
-            <div className="cell large-5">
-              <input className="button tiny" type="submit" value="Add User" />
-            </div>
-            <div className="cell large-5">
-              <input className="button tiny" type="button" onClick={this.handleFormClear} value="Clear Form" />
-            </div>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     )
   }
 }
