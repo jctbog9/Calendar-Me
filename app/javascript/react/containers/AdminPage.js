@@ -132,7 +132,6 @@ class AdminPage extends Component {
           handleChange={this.handleChange}
           addUser={this.addUser}
         />
-        <button onClick={this.showAddUser}>Hide</button>
       </div>
     }
 
