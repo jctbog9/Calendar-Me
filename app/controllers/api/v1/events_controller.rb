@@ -10,7 +10,7 @@ class Api::V1::EventsController < ApplicationController
         @rendered_events << event
       end
     end
-    render json: @rendered_events
+    render json: @rendered_events.sort_by{|event| event.date}
   end
 
   def create
