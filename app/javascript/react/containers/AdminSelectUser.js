@@ -33,6 +33,8 @@ class AdminSelectUser extends Component {
     });
     return(
       <div>
+        <h2>View User</h2>
+        <label>Select User</label>
         <select name="selectedUserId" value={this.props.selectedUser} onChange={this.props.handleChange}>
           <option value={0} name="selectedUserId"></option>
           {users}
