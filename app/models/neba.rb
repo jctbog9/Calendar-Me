@@ -90,7 +90,7 @@ class Neba
             end
           end
 
-          Event.find_or_create_by(name: event_name, location: event_location, date: event_date, time: event_time, url: event_url)
+          Event.find_or_create_by(name: event_name, organizer: "NEBA", location: event_location, date: event_date, time: event_time, url: event_url)
         end
       end
     end

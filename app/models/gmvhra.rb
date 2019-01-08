@@ -16,7 +16,7 @@ class Gmvhra
         event_time = row.css('div.eventInfoBoxValue')[1].text.strip
         event_location = row.css('div.eventInfoBoxValue')[2].text.strip
 
-        Event.find_or_create_by(name: event_name, date: event_date.strftime("%Y-%m-%d"), time: event_time, location: event_location, url: event_url)
+        Event.find_or_create_by(name: event_name, organizer: "GMVHRA", date: event_date.strftime("%Y-%m-%d"), time: event_time, location: event_location, url: event_url)
       end
     end
   end

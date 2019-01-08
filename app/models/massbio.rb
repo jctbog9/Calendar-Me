@@ -25,7 +25,6 @@ class Massbio
           else
             event_url = "https://www.massbio.org#{path}"
           end
-          binding.pry
           date = event.css("span.Property.date")[0].text.strip
           event_date = Date.parse(date)
           event_time = ""
@@ -45,7 +44,7 @@ class Massbio
           end
           event_location = event.css("address.Address").text.gsub(/\s+/, " ")
 
-          Event.find_or_create_by(name: event_name, date: event_date.strftime("%Y-%m-%d"), time: event_time, location: event_location, url: event_url)
+          Event.find_or_create_by(name: event_name, organizer: "MassBio", date: event_date.strftime("%Y-%m-%d"), time: event_time, location: event_location, url: event_url)
         end
       end
     page += 1
