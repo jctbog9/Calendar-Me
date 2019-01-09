@@ -5,11 +5,13 @@ import Calendar from './Calendar';
 import EventsContainer from './EventsContainer'
 import EventFormContainer from './EventFormContainer'
 
+import SearchBar from '../components/SearchBar'
+
 class LandingPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [],
+      addedEvents: [],
       suggestedEvents: [],
       showEventForm: false
     }
@@ -19,6 +21,7 @@ class LandingPage extends Component {
     this.showEventForm = this.showEventForm.bind(this)
     this.hideEventForm = this.hideEventForm.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleSearch = this.handleSearch.bind(this)
   }
 
   componentDidMount() {
@@ -64,7 +67,7 @@ class LandingPage extends Component {
   }
 
   undoButtonClick(undoPayload){
-    this.setState({ events: this.state.events.filter(event => undoPayload.id !== event.id) })
+    this.setState({ addedEvents: this.state.events.filter(event => undoPayload.id !== event.id) })
   }
 
   handleFormSubmit(formPayload){
@@ -98,9 +101,13 @@ class LandingPage extends Component {
     this.setState({ showEventForm: false })
   }
 
+  handleSearch(matchingEvents) {
+    this.setState({ suggestedEvents: matchingEvents })
+  }
+
   render() {
     let customForm;
-    if (this.state.showEventForm === true) {
+    if (this.state.showEventForm) {
       customForm =
       <div>
         <button className="form-button" onClick={this.hideEventForm}>Hide Form</button>
@@ -108,7 +115,7 @@ class LandingPage extends Component {
           handleFormSubmit={this.handleFormSubmit}
         />
       </div>
-    } else if (this.state.showEventForm === false) {
+    } else {
       customForm =
       <button className="form-button" onClick={this.showEventForm}>Add Custom Event</button>
     }
@@ -116,14 +123,19 @@ class LandingPage extends Component {
     return(
       <div>
         <Calendar
-          addedEvents={this.state.events}
+          addedEvents={this.state.addedEvents}
         />
         {customForm}
+        <SearchBar
+          handleSearch={this.handleSearch}
+          suggestedEvents={this.state.suggestedEvents}
+        />
         <EventsContainer
           undoButtonClick={this.undoButtonClick}
           removeSuggestedEvent={this.removeSuggestedEvent}
           suggestedEvents={this.state.suggestedEvents}
           addEventToCalendar={this.addEventToCalendar}
+          matchingEvents={this.state.matchingEvents}
         />
       </div>
     )

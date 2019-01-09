@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
+      post 'events/search', to: 'events#search'
       resources :events, only: [:index, :create]
       resources :signups, only: [:index, :show, :destroy, :create]
       resources :all_signups, only: [:index, :create, :delete]
