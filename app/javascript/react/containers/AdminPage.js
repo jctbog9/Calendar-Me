@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+
+import Calendar from './Calendar';
+import LandingPage from './LandingPage';
+import EventsContainer from './EventsContainer';
+
 import AdminSelectUser from './AdminSelectUser';
 import AdminAddUser from './AdminAddUser';
 import AdminAddTeam from './AdminAddTeam';
@@ -15,6 +20,7 @@ class AdminPage extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.addUser = this.addUser.bind(this);
+    this.showAdminCalendar = this.showAdminCalendar.bind(this);
     this.showAddUser = this.showAddUser.bind(this);
     this.showSelectUser = this.showSelectUser.bind(this);
     this.showAddTeam = this.showAddTeam.bind(this);
@@ -98,6 +104,10 @@ class AdminPage extends Component {
     this.setState({ [event.target.name]: event.target.value});
   }
 
+  showAdminCalendar(){
+    this.setState({ content: 'calendar' })
+  }
+
   showSelectUser(){
     this.setState({ content: 'selectUser' })
   }
@@ -112,7 +122,21 @@ class AdminPage extends Component {
 
   render() {
 
-    let content = <h2>Welcome {window.currentUser.first_name}</h2>
+    let content = <LandingPage />
+
+    if (this.state.content === 'calendar') {
+      content =
+      <div>
+        <LandingPage />
+      </div>
+    }
+
+    if (this.state.content === 'suggestedEvents') {
+      content =
+      <div>
+        <EventsContainer />
+      </div>
+    }
 
     if (this.state.content === 'selectUser') {
       content =
@@ -121,9 +145,11 @@ class AdminPage extends Component {
           users={this.state.users}
           handleChange={this.handleChange}
           selectedUserId={this.state.selectedUserId}
+          selection='User'
         />
       </div>
     }
+
 
     if (this.state.content === 'addUser') {
       content =
@@ -148,6 +174,10 @@ class AdminPage extends Component {
     return(
       <div>
         <div className="side-selectors">
+          <ShowButton
+            onClick={this.showAdminCalendar}
+            name="My Calendar"
+          />
           <ShowButton
             onClick={this.showSelectUser}
             name="Select User"

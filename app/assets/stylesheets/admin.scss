@@ -60,7 +60,9 @@
 
 .centered-content {
   width: 90%;
+  height: 90vh;
   margin-top: 20px;
   margin-left: 5%;
   margin-right: 5%;
+  overflow: scroll;
 }
