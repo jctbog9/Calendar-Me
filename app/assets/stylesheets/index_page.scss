@@ -2,6 +2,10 @@ body {
   background-color: #F8F5F5;
 }
 
+ul {
+  list-style: none;
+}
+
 .index-title {
   text-align: center;
   color: #0569B2;
@@ -80,11 +84,11 @@ body {
   border: 1px solid #000000;
 }
 
-.fas.fa-times:hover {
+#x-icon:hover {
    cursor: pointer;
 }
 
-.fas.fa-times {
+#x-icon {
   margin-top: 5px;
   margin-left: 90%;
 }
@@ -104,4 +108,24 @@ body {
   background-color: #FFFFFF;
   border: 1px solid #000000;
   margin-bottom: 10px;
+}
+
+#search-bar {
+ margin-top: 2rem;
+ margin-left: 20%;
+}
+
+input.search-field {
+  height: 3rem;
+  width: 120%;
+  float: right;
+}
+
+li {
+  float: left;
+}
+
+.search-button {
+  height: 3rem;
+  margin-left: 0.5rem;
 }
