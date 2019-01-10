@@ -135,7 +135,6 @@ class LandingPage extends Component {
           removeSuggestedEvent={this.removeSuggestedEvent}
           suggestedEvents={this.state.suggestedEvents}
           addEventToCalendar={this.addEventToCalendar}
-          matchingEvents={this.state.matchingEvents}
         />
       </div>
     )

@@ -42,29 +42,30 @@ class SearchBar extends Component {
   render() {
     return (
       <div id='search-bar'>
-            <form onSubmit={this.handleFieldSubmit}>
-              <ul>
-                <li className="small-8">
-                  <input type='text'
-                         name='searchField'
-                         value={this.state.searchField}
-                         onChange={this.handleFieldChange}
-                         placeholder='Search...'
-                         className='search-field'
-                  />
-                </li>
-                <li>
-                  <button type="submit" className="search-button">
-                    <i className="fa fa-search"></i>
-                  </button>
-                </li>
-                <li>
-                  <button type="reset" onClick={this.handleClear} className="search-button">
-                    <i className="fas fa-times clear"></i>
-                  </button>
-                </li>
-              </ul>
-            </form>
+        <form onSubmit={this.handleFieldSubmit}>
+          <ul>
+            <li className="small-8">
+              <input
+                type='text'
+                name='searchField'
+                value={this.state.searchField}
+                onChange={this.handleFieldChange}
+                placeholder='Search...'
+                className='search-field'
+              />
+            </li>
+            <li>
+              <button type="submit" className="search-button">
+                <i className="fa fa-search"></i>
+              </button>
+            </li>
+            <li>
+              <button type="reset" onClick={this.handleClear} className="search-button">
+                <i className="fas fa-times clear"></i>
+              </button>
+            </li>
+          </ul>
+        </form>
       </div>
     )
   }
