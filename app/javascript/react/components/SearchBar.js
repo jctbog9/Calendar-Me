@@ -44,7 +44,7 @@ class SearchBar extends Component {
       <div id='search-bar'>
         <form onSubmit={this.handleFieldSubmit}>
           <ul>
-            <li className="small-8">
+            <li className="small-8" id="search-bar-li">
               <input
                 type='text'
                 name='searchField'
@@ -54,12 +54,12 @@ class SearchBar extends Component {
                 className='search-field'
               />
             </li>
-            <li>
+            <li id="search-bar-li">
               <button type="submit" className="search-button">
                 <i className="fa fa-search"></i>
               </button>
             </li>
-            <li>
+            <li id="search-bar-li">
               <button type="reset" onClick={this.handleClear} className="search-button">
                 <i className="fas fa-times clear"></i>
               </button>
