@@ -84,13 +84,28 @@ ul {
   border: 1px solid #000000;
 }
 
-#x-icon:hover {
-   cursor: pointer;
-}
-
 #x-icon {
   margin-top: 5px;
   margin-left: 90%;
+}
+
+#x-icon:hover {
+  color: #353840;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.fas.fa-arrow-right.fa-2x {
+  padding: 10px;
+  float: left;
+  background-color: #008CBA;
+  cursor: pointer;
+}
+
+.fas.fa-arrow-right.fa-2x:hover {
+  padding: 10px 15px 10px 15px;
+  background-color: #2969AC;
+  transition-duration: 0.3s;
 }
 
 .undo-button {
