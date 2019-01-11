@@ -57,7 +57,7 @@ class EventsContainer extends Component {
     })
     return(
       <div className="events-holder">
-        <h2>Suggested Events</h2>
+        <h2 id="suggested-title">Suggested Events</h2>
         {events}
       </div>
     )

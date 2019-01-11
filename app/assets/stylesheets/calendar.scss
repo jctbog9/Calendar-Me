@@ -1,3 +1,14 @@
+$shadow: 4px 5px 5px 0px rgba(0, 0, 0, 0.15);
+
+.rbc-btn-group {
+  box-shadow: $shadow;
+}
+
+.rbc-btn-group,
+.rbc-month-view {
+  background-color: white;
+}
+
 .calendar-container {
   height: 500px;
   width: 95%;

@@ -184,7 +184,7 @@ class AdminPage extends Component {
 
     let sidebar;
 
-    if (this.state.sidebar === true){
+    if (this.state.sidebar){
       sidebar =
       <div>
         <div className="side-selectors">
@@ -225,8 +225,8 @@ class AdminPage extends Component {
 
     return(
       <div>
-        {sidebar}
-        {content}
+        <div id="sidebar-wrapper">{sidebar}</div>
+        <div id="content-wrapper">{content}</div>
       </div>
     )
   }

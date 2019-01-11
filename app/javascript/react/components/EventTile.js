@@ -76,12 +76,15 @@ class EventTile extends Component {
       return (
         <div className="event-container">
           <div className="event-centerize">
-            <li>{this.props.name}</li>
-            <li>{date}</li>
-            <li>{this.props.time}</li>
-            <li>{this.props.location}</li>
-            <a href={this.props.url} className="button" target="_blank">Event Details</a>
-            <button className="button" onClick={this.handleButtonClick}>Add to calendar</button>
+          <li className="event-name">{this.props.name}</li>
+          <li>
+            <ul className="row">
+              <li className="event-date columns small-4">{date}</li>
+              <li className="event-time columns small-8">{this.props.time}</li>
+            </ul>
+          </li>
+          <a href={this.props.url} className="button" target="_blank">Event Details</a>
+          <button className="button" onClick={this.handleButtonClick}>Add to calendar</button>
           </div>
         </div>
       )

@@ -1,3 +1,28 @@
+$shadow: 4px 5px 5px 0px rgba(0, 0, 0, 0.14);
+$font: 'Rambla', sans-serif;
+$bright-blue: #75faff;
+$turquoise: #008CBA;
+$sky-blue: #86c7ff;
+$dusk-blue: #0569B2;
+
+*,
+body,
+button,
+title,
+div,
+nav,
+a,
+li,
+ul,
+section,
+.index-title,
+.home-link,
+.form-button,
+.events-holder h2,
+.top-bar-section ul li a {
+  font-family: $font;
+}
+
 body {
   background-color: #F8F5F5;
 }
@@ -8,11 +33,33 @@ ul {
 
 .index-title {
   text-align: center;
-  color: #0569B2;
+  color: $dusk-blue;
+}
+
+.top-bar,
+.top-bar-section ul li a {
+  background-color: $dusk-blue;
+  border-bottom: 3px solid $bright-blue;
 }
 
 .top-bar {
-  background-color: #0569B2;
+  box-shadow: $shadow;
+}
+
+.top-bar-section ul li a {
+  height: 0;
+  border-bottom: 3px solid $dusk-blue;
+}
+
+.top-bar-section:hover {
+  color: white;
+  background-color: $bright-blue;
+}
+
+.side-selectors {
+  border-top: 11px solid white;
+  border-right: 11px solid $sky-blue;
+  box-shadow: $shadow;
 }
 
 .events-holder {
@@ -35,7 +82,8 @@ ul {
   height: 270px;
   margin: 10px;
   float: left;
-  background-color: #8EC5E2;
+  background-color: $sky-blue;
+  box-shadow: $shadow;
 }
 
 .button{
@@ -85,24 +133,27 @@ ul {
 }
 
 #x-icon {
-  margin-top: 5px;
-  margin-left: 90%;
+  color: white;
+  margin-top: 1%;
+  margin-left: 87%;
 }
 
 #x-icon:hover {
-  color: #353840;
+  color: $dusk-blue;
   cursor: pointer;
   transition-duration: 0.3s;
 }
 
 .fas.fa-arrow-right.fa-2x {
+  color: white;
   padding: 10px;
   float: left;
-  background-color: #008CBA;
+  background-color: $turquoise;
   cursor: pointer;
 }
 
 .fas.fa-arrow-right.fa-2x:hover {
+  color: $bright-blue;
   padding: 10px 15px 10px 15px;
   background-color: #2969AC;
   transition-duration: 0.3s;
@@ -127,13 +178,18 @@ ul {
 
 #search-bar {
  margin-top: 2rem;
- margin-left: 20%;
+ margin-left: 15%;
+ box-shadow: $shadow;
 }
 
 input.search-field {
   height: 3rem;
-  width: 120%;
+  width: 110%;
   float: right;
+}
+
+#search-bar-ul input{
+  box-shadow: $shadow;
 }
 
 #search-bar-li {
@@ -143,4 +199,46 @@ input.search-field {
 .search-button {
   height: 3rem;
   margin-left: 0.5rem;
+}
+
+#suggested-title {
+  color: $dusk-blue;
+  font-weight: bold;
+}
+
+.event-container {
+  box-shadow: $shadow;
+  background-color: white;
+  overflow: hidden;
+  border-top: 1px solid #ccd8e5;
+  border-left: 1px solid #ccd8e5;
+  border-bottom: 3px solid #ccd8e5;
+  border-right: 3px solid #ccd8e5;
+}
+
+.event-container:hover {
+  transform: scale(1.1);
+}
+
+.events-holder {
+  h2 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.event-name {
+  font-size: 1.25rem;
+  text-overflow: ellipsis;
+}
+
+.event-date {
+  padding-top: 0.1rem;
+  padding-left: 1rem;
+  font-size: 0.9rem;
+}
+
+.event-time {
+  padding: 0.1rem;
+  font-size: 0.85rem;
 }

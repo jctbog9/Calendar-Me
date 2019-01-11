@@ -43,7 +43,7 @@ class SearchBar extends Component {
     return (
       <div id='search-bar'>
         <form onSubmit={this.handleFieldSubmit}>
-          <ul>
+          <ul id="search-bar-ul">
             <li className="small-8" id="search-bar-li">
               <input
                 type='text'
