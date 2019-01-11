@@ -35,7 +35,7 @@ class LandingPage extends Component {
   }
 
   addEventToCalendar(formPayload){
-    this.setState({events: this.state.events.concat(formPayload)})
+    this.setState({addedEvents: this.state.addedEvents.concat(formPayload)})
     let signup = {
       user_id: window.currentUser.id,
       event_id: formPayload.id
