@@ -3,9 +3,14 @@ import React from 'react';
 export const TextField = (props) => {
   return (
     <div>
-      <label>
+      <label className="form-label">
         {props.label}
-        <input type="text" onChange={props.onChange} name={props.name} value={props.value}/>
+        <input className="form-field"
+               type="text"
+               onChange={props.onChange}
+               name={props.name}
+               value={props.value}
+        />
       </label>
     </div>
   );

@@ -55,7 +55,6 @@ class EventFormContainer extends Component {
             name="name"
             value={this.state.name}
             onChange={this.handleFormFieldChange}
-
           />
           <TextField
             label="Location"
@@ -81,8 +80,10 @@ class EventFormContainer extends Component {
             value={this.state.url}
             onChange={this.handleFormFieldChange}
           />
-          <button type="submit">Submit Event</button>
-          <button onClick={this.handleFormClear}>Clear Form</button>
+          <div id="form-button-div">
+            <button type="submit">Submit Event</button>
+            <button onClick={this.handleFormClear}>Clear Form</button>
+          </div>
         </form>
       )
     } else if (this.state.submitted === true) {

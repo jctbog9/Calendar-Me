@@ -186,7 +186,7 @@ class AdminPage extends Component {
 
     if (this.state.sidebar){
       sidebar =
-      <div>
+      <div id="side-selector-wrapper">
         <div className="side-selectors">
           <i id="x-icon" className="fas fa-times fa-2x" onClick={this.hideSideBar}/>
           <ShowButton

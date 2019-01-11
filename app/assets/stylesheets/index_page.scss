@@ -19,7 +19,9 @@ section,
 .home-link,
 .form-button,
 .events-holder h2,
-.top-bar-section ul li a {
+.top-bar-section ul li a,
+.event-container a,
+.event-container button {
   font-family: $font;
 }
 
@@ -31,9 +33,18 @@ ul {
   list-style: none;
 }
 
+button:hover {
+  background-color: $dusk-blue;
+  transform: scale(1.05);
+  animation-name: Enlarge;
+  animation-duration: 0.5s;
+}
+
 .index-title {
   text-align: center;
   color: $dusk-blue;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .top-bar,
@@ -51,15 +62,19 @@ ul {
   border-bottom: 3px solid $dusk-blue;
 }
 
-.top-bar-section:hover {
-  color: white;
-  background-color: $bright-blue;
-}
-
 .side-selectors {
   border-top: 11px solid white;
   border-right: 11px solid $sky-blue;
   box-shadow: $shadow;
+}
+
+#side-selector-wrapper {
+  text-align: center;
+}
+
+.side-selectors div button {
+  border-bottom: 1px solid $bright-blue;
+  width: 55%;
 }
 
 .events-holder {
@@ -135,7 +150,7 @@ ul {
 #x-icon {
   color: white;
   margin-top: 1%;
-  margin-left: 87%;
+  margin-left: 80%;
 }
 
 #x-icon:hover {
@@ -159,21 +174,22 @@ ul {
   transition-duration: 0.3s;
 }
 
-.undo-button {
-  margin-left: 25%;
-  margin-right: 25%;
-  width: 50%;
-  height: 30%;
+.form-label {
+  color: $turquoise;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-.added-succesfully {
+.form-field input {
+  box-shadow: $shadow;
+}
+
+#form-button-div {
   text-align: center;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  background-color: #FFFFFF;
-  border: 1px solid #000000;
-  margin-bottom: 10px;
+}
+
+#form-button-div button {
+  margin: 1rem;
 }
 
 #search-bar {
@@ -204,11 +220,13 @@ input.search-field {
 #suggested-title {
   color: $dusk-blue;
   font-weight: bold;
+  letter-spacing: 3px;
 }
 
 .event-container {
   box-shadow: $shadow;
   background-color: white;
+  text-align: center;
   overflow: hidden;
   border-top: 1px solid #ccd8e5;
   border-left: 1px solid #ccd8e5;
@@ -217,7 +235,23 @@ input.search-field {
 }
 
 .event-container:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  animation-name: Enlarge;
+  animation-duration: 0.5s;
+}
+
+.event-container a,
+.event-container button {
+  background-color: $turquoise;
+}
+
+.search-button:hover,
+.event-container a:hover,
+.event-container button:hover {
+  background-color: $dusk-blue;
+  transform: scale(1.05);
+  animation-name: Enlarge;
+  animation-duration: 0.5s;
 }
 
 .events-holder {
@@ -228,17 +262,68 @@ input.search-field {
 }
 
 .event-name {
+  color: $dusk-blue;
+  margin: 0.5rem;
+  margin-bottom: 0;
   font-size: 1.25rem;
-  text-overflow: ellipsis;
+  max-height: 7.5rem;
+  overflow: hidden;
 }
 
 .event-date {
+  text-align: center;
   padding-top: 0.1rem;
-  padding-left: 1rem;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
 .event-time {
+  color: $turquoise;
   padding: 0.1rem;
-  font-size: 0.85rem;
+  font-size: 1rem;
+}
+
+.event-tile-buttons a,
+.event-tile-buttons button {
+  padding: 0.5rem;
+}
+
+.added-succesfully {
+  text-align: center;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 1rem;
+  background-color: white;
+  margin-bottom: 10px;
+  max-height: 6rem;
+}
+
+.added-succesfully p {
+  color: $dusk-blue;
+  overflow: hidden;
+  max-height: 6rem;
+}
+
+.undo-button {
+  margin-left: 25%;
+  margin-right: 25%;
+  width: 50%;
+  height: 30%;
+}
+
+#x-icon-success {
+  color: white;
+  margin-top: 2%;
+  margin-left: 86%;
+}
+
+#x-icon-success:hover {
+  color: $dusk-blue;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+@-webkit-keyframes Enlarge {
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
 }
