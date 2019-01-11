@@ -67,7 +67,7 @@ class LandingPage extends Component {
   }
 
   undoButtonClick(undoPayload){
-    this.setState({ addedEvents: this.state.events.filter(event => undoPayload.id !== event.id) })
+    this.setState({ addedEvents: this.state.addedEvents.filter(event => undoPayload.id !== event.id) })
   }
 
   handleFormSubmit(formPayload){
