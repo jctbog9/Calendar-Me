@@ -66,7 +66,7 @@ class EventTile extends Component {
 
   render(){
     if (this.props.logo == 'N/A') {
-    }else {
+    } else {
       <p><img className='event-logo' src={this.props.logo} alt='logos' width='25%'/></p>
     }
 
@@ -76,21 +76,27 @@ class EventTile extends Component {
       return (
         <div className="event-container">
           <div className="event-centerize">
-            <li>{this.props.name}</li>
-            <li>{date}</li>
-            <li>{this.props.time}</li>
-            <li>{this.props.location}</li>
-            <a href={this.props.url} className="button" target="_blank">Event Details</a>
-            <button className="button" onClick={this.handleButtonClick}>Add to calendar</button>
+            <li className="event-organizer">{this.props.organizer}</li>
+            <li className="event-name">{this.props.name}</li>
+            <li className="event-date">{date}</li>
+            <li className="event-time">{this.props.time}</li>
+            <li className="event-location">{this.props.location}</li>
+            <div className="event-tile-buttons">
+              <a href={this.props.url} className="button" target="_blank">Event Details</a>
+              <button className="button" onClick={this.handleButtonClick}>Add to calendar</button>
+            </div>
           </div>
         </div>
       )
     } else {
       return (
         <div className="event-container-clicked">
-          <i id="x-icon" className="fas fa-times fa-2x" onClick={this.handleCloseEvent}></i>
-          <div className="added-succesfully">
-            <p>{this.props.name} Added!</p>
+          <i id="x-icon-success" className="fas fa-times fa-2x" onClick={this.handleCloseEvent}></i>
+          <div className="added-successfully-event">
+            <p>Event added!</p>
+          </div>
+          <div className="added-successfully-name">
+            <p>{this.props.name}</p>
           </div>
           <button onClick={this.handleUndo} className="undo-button">Undo</button>
         </div>

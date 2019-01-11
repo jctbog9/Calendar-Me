@@ -41,6 +41,7 @@ class EventsContainer extends Component {
           key={event.id}
           id={event.id}
           event={event}
+          organizer={event.organizer}
           name={event.name}
           description={event.description}
           location={event.location}
