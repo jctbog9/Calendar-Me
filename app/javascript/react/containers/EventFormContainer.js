@@ -22,7 +22,8 @@ class EventFormContainer extends Component {
     this.setState({ [event.target.name]: event.target.value});
   }
 
-  handleFormClear(){
+  handleFormClear(event){
+    event.preventDefault()
     this.setState({
       name: '',
       location: '',
