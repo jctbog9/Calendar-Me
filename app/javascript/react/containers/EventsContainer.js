@@ -45,6 +45,7 @@ class EventsContainer extends Component {
           description={event.description}
           location={event.location}
           url={url}
+          organizer={event.organizer}
           logo={logo}
           date={event.date}
           time={event.time}

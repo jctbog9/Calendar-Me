@@ -23,9 +23,10 @@ ul {
 .event-container {
   border: 1px solid black;
   width: 30%;
-  height: 270px;
+  height: 300px;
   margin: 10px;
   float: left;
+  overflow: scroll;
 }
 
 .event-container-clicked {
