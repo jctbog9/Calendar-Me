@@ -38,7 +38,7 @@ class EventsContainer extends Component {
 
       return(
         <EventTile
-          key={event.id}
+          key={event.name + event.id}
           id={event.id}
           event={event}
           name={event.name}

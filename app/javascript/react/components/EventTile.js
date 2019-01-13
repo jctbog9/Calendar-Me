@@ -76,6 +76,7 @@ class EventTile extends Component {
       return (
         <div className="event-container">
           <div className="event-centerize">
+            <li>{this.props.organizer}</li>
             <li>{this.props.name}</li>
             <li>{date}</li>
             <li>{this.props.time}</li>

@@ -11,6 +11,7 @@ class EventFormContainer extends Component {
       date: '',
       time: '',
       url: '',
+      organizer: '',
       submitted: false
     }
     this.handleFormFieldChange = this.handleFormFieldChange.bind(this)
@@ -29,7 +30,8 @@ class EventFormContainer extends Component {
       location: '',
       date: '',
       time: '',
-      url: ''
+      url: '',
+      organizer: ''
     })
   }
 
@@ -40,7 +42,8 @@ class EventFormContainer extends Component {
       location: this.state.location,
       date: this.state.date,
       time: this.state.time,
-      url: this.state.url
+      url: this.state.url,
+      organizer: this.state.organizer
     }
     this.props.handleFormSubmit(formPayload)
     this.setState({ submitted: true })
@@ -74,6 +77,12 @@ class EventFormContainer extends Component {
             label="Time"
             name="time"
             value={this.state.time}
+            onChange={this.handleFormFieldChange}
+          />
+          <TextField
+            label="Event Organizer"
+            name="organizer"
+            value={this.state.organizer}
             onChange={this.handleFormFieldChange}
           />
           <TextField
