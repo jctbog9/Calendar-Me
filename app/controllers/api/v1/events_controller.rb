@@ -17,7 +17,7 @@ class Api::V1::EventsController < ApplicationController
 
   def create
     Event.find_or_create_by(event_params)
-    render Event.all
+    render json: Event.all
   end
 
   def search
