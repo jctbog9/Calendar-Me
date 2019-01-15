@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import TextField from '../components/TextField'
+import RadioButton from '../components/RadioButton'
+
 class AdminAddUser extends Component {
   constructor(props) {
     super(props);
@@ -10,11 +13,34 @@ class AdminAddUser extends Component {
       personalPhone: "",
       email: "",
       role: "",
-      successMessage: ""
+      team_id: "",
+      successMessage: "",
+      teams: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleFormClear = this.handleFormClear.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+  }
+
+  componentDidMount(){
+    fetch('api/v1/teams',
+    {
+      credentials: 'same-origin'
+    })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      } else {
+        let errorMessage = `${response.status} (${response.statusText})`,
+        error = new Error(errorMessage);
+        throw error;
+      }
+    })
+    .then(response => response.json())
+    .then(response => {
+      this.setState({ teams: response });
+    })
+    .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   handleChange(event) {
@@ -30,7 +56,8 @@ class AdminAddUser extends Component {
         businessPhone: "",
         personalPhone: "",
         email: "",
-        role: ""
+        role: "",
+        team_id: ""
       }
     );
   }
@@ -45,7 +72,8 @@ class AdminAddUser extends Component {
         business_phone: this.state.businessPhone,
         personal_phone: this.state.personalPhone,
         email: this.state.email,
-        role: this.state.role
+        role: this.state.role,
+        team_id: this.state.team_id
       };
       this.setState({ successMessage: "User succesfully created!"})
       this.props.addUser(formPayload);
@@ -54,6 +82,15 @@ class AdminAddUser extends Component {
   }
 
   render() {
+
+  let options;
+
+  if (this.state.teams){
+    options = this.state.teams.map(team => {
+      return <option key={team.id} value={team.id}>{team.name}</option>
+    })
+  }
+
     return(
       <div>
         <h2>Create New User</h2>
@@ -62,87 +99,78 @@ class AdminAddUser extends Component {
             <div className="first-and-last">
               {this.state.successMessage}
               <div className="cell large-5">
-                <label>
-                  First Name:
-                  <input
-                    type="text"
-                    name="firstName"
-                    value={this.state.firstName}
-                    onChange={this.handleChange}
-                  />
-                </label>
+                <TextField
+                  name="firstName"
+                  onChange={this.handleChange}
+                  value={this.state.firstName}
+                  label="First Name:"
+                />
               </div>
               <div className="cell large-6">
-                <label>
-                  Last Name:
-                  <input
-                    type="text"
-                    name="lastName"
-                    value={this.state.lastName}
-                    onChange={this.handleChange}
-                  />
-                </label>
+                <TextField
+                  name="lastName"
+                  onChange={this.handleChange}
+                  value={this.state.lastName}
+                  label="Last Name:"
+                />
               </div>
             </div>
             <div className="phone-numbers">
               <div className="cell large-5">
-                <label>
-                  Business Phone:
-                  <input
-                    type="text"
-                    name="businessPhone"
-                    value={this.state.businessPhone}
-                    onChange={this.handleChange}
-                  />
-                </label>
+                <TextField
+                  name="businessPhone"
+                  onChange={this.handleChange}
+                  value={this.state.businessPhone}
+                  label="Business Phone:"
+                />
               </div>
               <div className="cell large-6">
-                <label>
-                  Personal Phone:
-                  <input
-                    type="text"
-                    name="personalPhone"
-                    value={this.state.personalPhone}
-                    onChange={this.handleChange}
-                  />
-                </label>
+                <TextField
+                  name="personalPhone"
+                  onChange={this.handleChange}
+                  value={this.state.personalPhone}
+                  label="Personal Phone:"
+                />
               </div>
             </div>
             <div className="email-and-role">
               <div className="cell large-8">
-                <label>
-                  Email:
-                  <input
-                    type="text"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.handleChange}
-                  />
-                </label>
+                <TextField
+                  name="email"
+                  onChange={this.handleChange}
+                  value={this.state.email}
+                  label="Email"
+                />
               </div>
               <div className="cell large-3">
                 <label>
                   Role:
-                  <label>
-                    <input
-                      type="radio"
-                      name="role"
-                      value="member"
-                      onChange={this.handleChange}
-                    />
-                    Member
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="role"
-                      value="leader"
-                      onChange={this.handleChange}
-                    />
-                    Team Leader
-                  </label>
+                  <RadioButton
+                    name="role"
+                    label="Member"
+                    onChange={this.handleChange}
+                    value="member"
+                  />
+                  <RadioButton
+                    name="role"
+                    label="Team Leader"
+                    onChange={this.handleChange}
+                    value="leader"
+                  />
+                  <RadioButton
+                    name="role"
+                    label="Admin"
+                    onChange={this.handleChange}
+                    value="admin"
+                  />
                 </label>
               </div>
+              <label>
+                <select name="team_id" onChange={this.handleChange}>
+                  {options}
+                </select>
+              Team
+              </label>
             </div>
             <div className="form-buttons">
               <div className="cell large-5">
