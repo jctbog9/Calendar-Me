@@ -8,7 +8,7 @@ class Api::V1::TeamsController < ApplicationController
 
   def create
     Team.find_or_create_by(team_params)
-    render Team.all
+    render json: Team.all
   end
 
   private
