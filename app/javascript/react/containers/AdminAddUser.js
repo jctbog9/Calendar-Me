@@ -13,7 +13,7 @@ class AdminAddUser extends Component {
       personalPhone: "",
       email: "",
       role: "",
-      team_id: "",
+      team_id: "1",
       successMessage: "",
       teams: []
     };
