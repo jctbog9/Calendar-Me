@@ -89,7 +89,7 @@ class EditUserPage extends Component {
           <TextField
             name="newPassword"
             value={this.state.newPassword}
-            label="New Password"
+            label="New Password:"
             onChange={this.handlePasswordChange}
             className="edit-password-form-field"
             type="password"
@@ -97,7 +97,7 @@ class EditUserPage extends Component {
           <TextField
             name="confirmPassword"
             value={this.state.confirmPassword}
-            label="New Password"
+            label="Confirm Password:"
             onChange={this.handleConfirmPasswordChange}
             className="edit-password-form-field"
             type="password"
