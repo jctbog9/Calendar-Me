@@ -7,6 +7,8 @@ import TeamLeaderPage from '../containers/TeamLeaderPage'
 
 import EditEventsContainer from '../containers/EditEventsContainer';
 
+import EditUserPage from '../containers/EditUserPage';
+
 export const App = (props) => {
 
   let path;
@@ -23,6 +25,7 @@ export const App = (props) => {
     <Router history={browserHistory}>
       {path}
       <Route path='/my-events' component={EditEventsContainer} />
+      <Route path='/edit-profile' component={EditUserPage} />
     </Router>
   );
 };

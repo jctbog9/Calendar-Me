@@ -1,0 +1,38 @@
+.change-password {
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+}
+
+.edit-password-form-field {
+  width: 100%;
+}
+
+
+#edit-password-button {
+  margin-left: 40%;
+  margin-right: 40%;
+  width: 20%;
+}
+
+.change-password-container{
+  padding-bottom: 40px;
+}
+
+.wrong-password {
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+  background-color: #E33B2F;
+  border: 2px solid #C4291C;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.correct-password-message {
+  text-align: center;
+  padding: 5px 0px 5px 0px;
+  background-color: #63D67E;
+  border: 2px solid #51B140;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

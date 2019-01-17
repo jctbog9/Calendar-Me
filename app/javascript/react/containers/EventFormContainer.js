@@ -59,6 +59,7 @@ class EventFormContainer extends Component {
             name="name"
             value={this.state.name}
             onChange={this.handleFormFieldChange}
+            type="text"
 
           />
           <TextField
@@ -66,30 +67,35 @@ class EventFormContainer extends Component {
             name="location"
             value={this.state.location}
             onChange={this.handleFormFieldChange}
+            type="text"
           />
           <TextField
             label="Date (MM/DD/YYYY)"
             name="date"
             value={this.state.date}
             onChange={this.handleFormFieldChange}
+            type="text"
           />
           <TextField
             label="Time"
             name="time"
             value={this.state.time}
             onChange={this.handleFormFieldChange}
+            type="text"
           />
           <TextField
             label="Event Organizer"
             name="organizer"
             value={this.state.organizer}
             onChange={this.handleFormFieldChange}
+            type="text"
           />
           <TextField
             label="Event's Website URL"
             name="url"
             value={this.state.url}
             onChange={this.handleFormFieldChange}
+            type="text"
           />
           <button type="submit">Submit Event</button>
           <button onClick={this.handleFormClear}>Clear Form</button>

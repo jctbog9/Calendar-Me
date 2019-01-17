@@ -104,6 +104,7 @@ class AdminAddUser extends Component {
                   onChange={this.handleChange}
                   value={this.state.firstName}
                   label="First Name:"
+                  type="text"
                 />
               </div>
               <div className="cell large-6">
@@ -112,6 +113,7 @@ class AdminAddUser extends Component {
                   onChange={this.handleChange}
                   value={this.state.lastName}
                   label="Last Name:"
+                  type="text"
                 />
               </div>
             </div>
@@ -122,6 +124,7 @@ class AdminAddUser extends Component {
                   onChange={this.handleChange}
                   value={this.state.businessPhone}
                   label="Business Phone:"
+                  type="text"
                 />
               </div>
               <div className="cell large-6">
@@ -130,6 +133,7 @@ class AdminAddUser extends Component {
                   onChange={this.handleChange}
                   value={this.state.personalPhone}
                   label="Personal Phone:"
+                  type="text"
                 />
               </div>
             </div>
@@ -140,6 +144,7 @@ class AdminAddUser extends Component {
                   onChange={this.handleChange}
                   value={this.state.email}
                   label="Email"
+                  type="text"
                 />
               </div>
               <div className="cell large-3">
