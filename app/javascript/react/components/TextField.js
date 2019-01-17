@@ -2,10 +2,10 @@ import React from 'react';
 
 export const TextField = (props) => {
   return (
-    <div>
+    <div className={props.className}>
       <label>
         {props.label}
-        <input type="text" onChange={props.onChange} name={props.name} value={props.value}/>
+        <input type={props.type} onChange={props.onChange} name={props.name} value={props.value}/>
       </label>
     </div>
   );
