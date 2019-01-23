@@ -7,7 +7,7 @@ class Api::V1::EventsController < ApplicationController
     @rendered_events = []
     @events.each do |event|
       signups = event.signups
-      if signups.where(user_id: current_user.id).length == 0
+      if signups.where(user_id: current_user.id).length == 0 && Date.parse(event.date) > Date.today
         @rendered_events << event
       end
     end

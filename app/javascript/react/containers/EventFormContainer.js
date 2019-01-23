@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 
 import TextField from '../components/TextField'
 
@@ -40,7 +41,7 @@ class EventFormContainer extends Component {
     let formPayload = {
       name: this.state.name,
       location: this.state.location,
-      date: this.state.date,
+      date: moment(this.state.date).format("YYYY-MM-DD"),
       time: this.state.time,
       url: this.state.url,
       organizer: this.state.organizer
