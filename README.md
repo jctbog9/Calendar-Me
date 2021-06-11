@@ -13,3 +13,11 @@ If a user is an Admin, they have the ability to create a new user in the event t
 The suggested events are entered into the database using web crawler Ruby models that were developed with use of the HTTParty and Nokogiri gems. These crawlers search organization websites and find upcoming events of interest.
 
 This application is run on Ruby version 2.4.5 and has a React front end done using version 15.4.2
+
+# To change MASTER to MAIN locally:
+```
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
+```
